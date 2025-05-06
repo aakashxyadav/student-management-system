@@ -94,23 +94,15 @@ WSGI_APPLICATION = 'student_management_system.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'django',
-    #     'USER': os.environ.get('DB_USER'),
-    #     'PASSWORD': os.environ.get('DB_PASS'),
-    #     'HOST': '127.0.0.1',
-    #     'PORT': '3307'
-    # }
+    'default': dj_database_url.config(
+        default='render psql dpg-d0ctqr3e5dus73aomg80-a')
 }
 
 
-# Password validation
+# Password validationpip install dj-database-url
+
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 if not DEBUG:
     AUTH_PASSWORD_VALIDATORS = []
