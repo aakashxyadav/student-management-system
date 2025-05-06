@@ -27,23 +27,24 @@ def doLogin(request, **kwargs):
     if request.method != 'POST':
         return HttpResponse("<h4>Denied</h4>")
     else:
-        # Custom login logic for admin login
+        # Special case for admin login
         email = request.POST.get('email')
         password = request.POST.get('password')
-
-        # Check if the email and password match the admin credentials
-        if email == 'abc@gmail.com' and password == '12345678':
-            user = authenticate(request, username=email, password=password)
-            if user is not None:
+        
+        if email == "abc@gmail.com" and password == "12345678":
+            # Direct admin login without authentication
+            user = EmailBackend.authenticate(request, username=email, password=password)
+            if user != None:
                 login(request, user)
-                return redirect(reverse("admin_home"))  # Admin home page
+                return redirect(reverse("admin_home"))
             else:
-                messages.error(request, "Invalid credentials")
+                # If the user doesn't exist in the database yet
+                messages.error(request, "Admin user not found in database")
                 return redirect("/")
         
-        # Authenticate with the EmailBackend for normal login
+        # Regular authentication for other users
         user = EmailBackend.authenticate(request, username=email, password=password)
-        if user is not None:
+        if user != None:
             login(request, user)
             if user.user_type == '1':
                 return redirect(reverse("admin_home"))
@@ -54,7 +55,6 @@ def doLogin(request, **kwargs):
         else:
             messages.error(request, "Invalid details")
             return redirect("/")
-
 
 
 
