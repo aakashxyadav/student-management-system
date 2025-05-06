@@ -94,10 +94,8 @@ WSGI_APPLICATION = 'student_management_system.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://student_management_db_6hez_user:g1FhdiNhfyruMtcpDGq5UGjDQbKnSyTc@dpg-d0ctqr3e5dus73aomg80-a/student_management_db_6hez')}
+    "default" :dj_database_url.parse(os.environ.get("DATABASE_URL"))}
 
 # Password validationpip install dj-database-url
 
@@ -165,4 +163,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 prod_db = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'main_app.CustomUser'
+
 
