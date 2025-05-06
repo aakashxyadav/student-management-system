@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'student_management_system.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='render psql dpg-d0ctqr3e5dus73aomg80-a')
+        default='postgresql://student_management_db_6hez_user:g1FhdiNhfyruMtcpDGq5UGjDQbKnSyTc@dpg-d0ctqr3e5dus73aomg80-a/student_management_db_6hez')
 }
 
 
