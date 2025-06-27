@@ -36,7 +36,7 @@ SECRET_KEY = env('MY_SECRET_KEY')
 DEBUG = True
 
 # ALLOWED_HOSTS = ['smswithdjango.herokuapp.com']
-ALLOWED_HOSTS = ['student-management-system-b5zn.onrender.com']
+ALLOWED_HOSTS = ['student-management-system-b5zn.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
