@@ -14,9 +14,11 @@ psycopg2-binary==2.9.9
 python-dotenv==1.1.0
 pytz==2025.2
 requests==2.32.3
-six==1.17.0
+six==1.17.0z
 sqlparse==0.5.3
 typing_extensions==4.13.2
 urllib3==1.25.11
 whitenoise==6.6.0
 gunicorn
+python-3.11.9
+
